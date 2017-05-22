@@ -19,7 +19,7 @@ public class CCDIK : MonoBehaviour {
       //Find the closest point 
       for (int j = joints.Length - 1; j >= 0; j--) {
         //for (int j = 0; j < joints.Length; j++) {
-        Vector3 jointPoint = actualCapsuleClosestPoint(environment.transform.position, joints[j].collider as CapsuleCollider);
+        Vector3 jointPoint = actualCapsuleClosestPoint(environment.transform.position, joints[j].GetComponent<Collider>() as CapsuleCollider);
         Vector3 offset = jointPoint - environment.transform.position;
         if (offset.magnitude < environment.radius * environment.transform.lossyScale.x) {
           nearestPoint.parent = joints[j].transform;
