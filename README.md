@@ -5,25 +5,26 @@ A grab bag of some of the neat math and physics tricks that I've amassed over th
 
 
 ## Kabsch
-<img src="http://i34.photobucket.com/albums/d144/Zalo10/Kabsch_zpshxn8kz7p.gif">
+<img src="http://i.imgur.com/2qhRmtN.gif">
 
 An algorithm that can take in an arbitrary set of point-pairs and find the globally optimal translation and rotation to minimize the distance between those point pairs.  Incredibly useful, and very cheap.   Uses Matthias Muller's iterative optimal rotation solver in place of SVD, as outlined here: https://animation.rwth-aachen.de/media/papers/2016-MIG-StableRotation.pdf
+Update: Added an example for averaging arbitrary numbers of quaternions; possibly more accurate than a normalized lerp (averaging the quaternion components in linear space and then normalizing).
 
 
 ## [Stereographic/Fisheye Camera](https://en.wikipedia.org/wiki/Stereographic_projection)
-<img src="http://i34.photobucket.com/albums/d144/Zalo10/StereographicCamera2_zpsingx8wec.gif">
+<img src="http://i.imgur.com/MO6RLZq.gif">
 
 A prefab that concatenates and warps the images from four cameras into one 180 degree fisheye view, projected stereographically.
 
 
 ## Verlet Softbody, Rigidbody, and Chain
-<img src="http://i34.photobucket.com/albums/d144/Zalo10/softSphere_zpsle1ca59w.gif"> <img src="http://i34.photobucket.com/albums/d144/Zalo10/Verlet_zpsvzicq1is.gif">
+<img src="http://i.imgur.com/y1jYAzw.gif"> <img src="http://i.imgur.com/xlAhkL4.gif">
 
 Numerous examples of using verlet integration ([a subset of Position Based Dynamics](http://matthias-mueller-fischer.ch/publications/posBasedDyn.pdf)) to simulate soft/rigid bodies, cloth, and particle linkage chains.
 
 
 ## [Kalman Filter](https://en.wikipedia.org/wiki/Kalman_filter#Details)
-<img src="http://i34.photobucket.com/albums/d144/Zalo10/kalman2_zps4zqhnqcj.gif">
+<img src="http://i.imgur.com/SL5JJMv.gif">
 
 A textbook implementation of a Kalman filter (transcribed from wikipedia)   Kalman filters are a form of bayesian filtering; they are capable of taking in information from multiple sources and "fusing" them into a signal that is cleaner/more accurate than any of the constituent signals.  A properly tuned Kalman filter is the mathematically "optimal" technique for turning noisy data into clean data in real time (as long as the noise follows a gaussian distribution and the data varies linearly).  In practice one must deal with biases and non-linearly varying quantities.
 
@@ -33,13 +34,21 @@ A generic matrix class and a set of basic matrix operations (multiplication, add
 
 
 ## Constraints/[Inverse Kinematics](http://www.elysium-labs.com/robotics-corner/learn-robotics/introduction-to-robotics/kinematic-jacobian/)
-<img src="http://i34.photobucket.com/albums/d144/Zalo10/LimitedJoint_zpslapag2ch.gif"> <img src="http://i34.photobucket.com/albums/d144/Zalo10/Finger_zps3cugukbj.gif">
+<img src="http://i.imgur.com/uymJf1L.gif"> <img src="http://i.imgur.com/ov58hQH.gif">
 
 A set of constraint functions that can be used to build [an iterative inverse kinematics solver.](https://makeshifted.itch.io/dexter-arm-ik)
 
 
 
 ## Other experiments:
+
+### Nelder-Mead (Amoeba) Numerical Optimizer
+A general, n-dimensional implementation of [Nelder and Mead's numerical optimization method](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method) for minimizing cost functions.  This is a popular optimization technique for problems with high-dimensionality and no gradient information.  Included is an example of optimizing a 5-DoF IK system (far less efficient than CCDIK, but more flexible overall).  Also contains a numerical gradient descent optimizer for comparison.
+
+
+### Linear Assignment
+A port of Roy Jonker's famous solution to the [Linear Assignment Problem](https://en.wikipedia.org/wiki/Assignment_problem).  Allows you to take two arbitrary lists of objects (with a cost to pair objects in each of them to each other), and to find the globally optimal pairing betweeing objects in these lists.  Extremely handy.
+
 
 ### Linear Blend Skinning
 A reference implementation that demonstrates how to apply bone motions to a model using the data contained within a skinned mesh renderer.   As they say, there is more than one way to skin a mesh.
@@ -74,7 +83,7 @@ An example implementing a haptic probe, where the force on the effector of the h
 
 
 ### Bundle Adjustment
-My attempts at implementing [Bundle Adjustment](https://en.wikipedia.org/wiki/Bundle_adjustment) (an algorithm which attempts to solve for the relative motion between two camera images, given the motion of a set of feature-points between the images).  It will converge when either position or rotation adjustment is applied, but not when they are applied simultaneously (not sure why...)
+My attempts at implementing [Bundle Adjustment](https://en.wikipedia.org/wiki/Bundle_adjustment) (an algorithm which attempts to solve for the relative motion between two camera images, given the motion of a set of feature-points between the images). The stereo-case now converges to a unique 6-DoF pose (in most situations).  This implementation is highly parallelizable.
 
 
 ### Torque Extension for HingeJoints
@@ -86,12 +95,12 @@ Attempts to simulate soft-spongy contact by damping the accelerations that are b
 
 
 ### 2D Platforming Character
-<img src="http://i34.photobucket.com/albums/d144/Zalo10/platformer_zpsaszusawb.gif">
+<img src="http://i.imgur.com/wIeKqxp.gif">
 
 Uses a neat trick where, if the anchor of a spring joint is moved, both connected rigidbodies are physically affected. This allows one to easily simulate "muscles".
 
 
 ### Rolling Cubes
-<img src="http://i34.photobucket.com/albums/d144/Zalo10/rolling_zpsw1tj8dks.gif">
+<img src="http://i.imgur.com/T3p8EpK.gif">
 
 Fun for the whole family!
