@@ -287,7 +287,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 0.5
+  far clip plane: 2
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -554,7 +554,6 @@ GameObject:
   m_Component:
   - component: {fileID: 872994434}
   - component: {fileID: 872994436}
-  - component: {fileID: 872994435}
   m_Layer: 0
   m_Name: LeftCam
   m_TagString: MainCamera
@@ -575,13 +574,6 @@ Transform:
   m_Father: {fileID: 1997123323}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &872994435
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 872994433}
-  m_Enabled: 1
 --- !u!20 &872994436
 Camera:
   m_ObjectHideFlags: 0
@@ -599,7 +591,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 0.5
+  far clip plane: 2
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -802,7 +794,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 0.5
+  far clip plane: 2
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -986,8 +978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00fa992bc53dd8a4c87f484283b00d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adjustPosition: 1
-  adjustRotation: 0
   features:
   - {fileID: 678249442}
   - {fileID: 230370962}
@@ -999,10 +989,11 @@ MonoBehaviour:
   - {fileID: 1364872347}
   - {fileID: 634320946}
   - {fileID: 1008528448}
-  camera11: {fileID: 365179938}
-  camera12: {fileID: 1275341411}
-  camera21: {fileID: 872994434}
-  camera22: {fileID: 2038788019}
+  cameras:
+  - {fileID: 365179938}
+  - {fileID: 1275341411}
+  - {fileID: 872994434}
+  - {fileID: 2038788019}
 --- !u!4 &1431779720
 Transform:
   m_ObjectHideFlags: 0
@@ -1010,7 +1001,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1431779718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1486378348}
@@ -1072,10 +1063,10 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1493127823}
-  m_Text: "Try dragging the \"AdjustingCamera\" \nout of place.  Watch it solve for
-    the\nposition that minimizes the distance \nbetween rays.\n\nNote that this one
-    is fully constrained.\nUnfortunately, it does not converge if\nboth position and
-    rotation are active..."
+  m_Text: "Try dragging the \"AligningCam\" \nout of place.  Watch it solve for the\nposition
+    + rotation that minimizes the \ndistance between rays.\n\nNote that this one is
+    fully constrained.\nObserve how it converges from most \nmoderate positional and
+    rotational \ndisplacements, but not all."
   m_OffsetZ: 0
   m_CharacterSize: 0.006
   m_LineSpacing: 1
@@ -1294,7 +1285,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1997123322}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.075, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 872994434}
@@ -1348,7 +1339,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 0.5
+  far clip plane: 2
   field of view: 60
   orthographic: 0
   orthographic size: 5
